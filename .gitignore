@@ -4,7 +4,8 @@
 *.orig
 
 ### Public folder ###
-dist
+# JS Bundle
+dist/bundle.js
 
 ### Node ###
 # Logs
