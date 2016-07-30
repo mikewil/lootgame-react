@@ -2,10 +2,9 @@
   "name": "react-loot-game",
   "version": "1.0.0",
   "description": "An RNG-based item system.",
-  "main": "js/index.js",
+  "main": "js/index.jsx",
   "scripts": {
-    "build": "watchify js/index.js -o dist/bundle.js -t [ babelify --presets [ es2015 react ] ]",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "watchify js/index.jsx -o dist/bundle.js"
   },
   "author": "Michael Williams",
   "license": "ISC",
@@ -21,5 +20,8 @@
     "babelify": "^7.3.0",
     "browserify": "^13.1.0",
     "watchify": "^3.7.0"
+  },
+  "browserify": {
+    "transform": [["babelify", {"presets": ["es2015", "react"]}]]
   }
 }
