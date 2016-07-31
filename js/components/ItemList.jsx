@@ -1,17 +1,39 @@
 import React from 'react';
-import {ITEMS} from '../constants/items';
 import Item from './Item.jsx';
+import {Modal, Button} from 'react-bootstrap';
 
 export default class ItemList extends React.Component {
+
 	constructor(props) {
-		props.items = ITEMS;
 		super(props);
 	}
+
 	render() {
+		let list;
+
+		if (this.props.container.length) {
+			list = [];
+			this.props.container.map((item, i) => {
+				list.push(<Item key={i} item={item} />);
+			});
+		} else {
+			list = <li>This container is empty</li>;
+		}
+
 		return (
-			<ul>
-				<Item items={this.props.items} />
-			</ul>
+			<Modal show={this.props.show} onHide={this.props.close}>
+				<Modal.Header>
+					{this.props.title}
+				</Modal.Header>
+				<Modal.Body>
+					<ul>
+						{list}
+					</ul>
+				</Modal.Body>
+				<Modal.Footer>
+					<Button onClick={this.props.close}>Close</Button>
+				</Modal.Footer>
+			</Modal>
 		);
 	}
 }

@@ -22,6 +22,18 @@ const CONTAINER_TYPES = [{
 		material: 50,
 		accessory: 90
 	}
+}, {
+	type: 'suitcase',
+	name: 'Suitcase',
+	chance: 30,
+	itemchance: {
+		weapon: 10,
+		consumable: 20,
+		valuable: 50,
+		explosive: 15,
+		material: 60,
+		accessory: 20
+	}
 }];
 
 const CONTAINER_SIZES = [{
