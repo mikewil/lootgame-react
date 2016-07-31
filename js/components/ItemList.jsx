@@ -11,6 +11,7 @@ export default class ItemList extends React.Component {
 	render() {
 		let list;
 
+		// If container is empty, say so
 		if (this.props.container.length) {
 			list = [];
 			this.props.container.map((item, i) => {
