@@ -2,10 +2,8 @@ import React from 'react';
 import ItemList from './ItemList.jsx';
 import {Navbar, Grid, Row, Col, Button} from 'react-bootstrap';
 
-import {RANDOM_NUM} from '../constants/methods';
+import {RANDOM_NUM, GET_LOOT} from '../constants/methods';
 import {CONTAINER_TYPES, CONTAINER_SIZES} from '../constants/containers';
-import {ITEMS} from '../constants/items';
-
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -59,74 +57,8 @@ export default class App extends React.Component {
 		}
 	}
 
-	getLoot(c) {
-		let size = c.size,
-			type = c.type,
-			item,
-			itemChance,
-			typeChance,
-			lootAmt,
-			minCapacity,
-			maxCapacity,
-			maxLimit,
-			contItemChance,
-			container = [];
-
-		switch (size) {
-			case 'epic':
-				minCapacity = 15;
-				maxCapacity = 25;
-				maxLimit = 1;
-			case 'large':
-				minCapacity = 5;
-				maxCapacity = 15;
-				maxLimit = 25;
-				break;
-			case 'medium':
-				minCapacity = 2;
-				maxCapacity = 10;
-				maxLimit = 50;
-				break;
-			case 'small':
-			default:
-				minCapacity = 0;
-				maxCapacity = 5;
-				maxLimit = 100;
-				break;
-		}
-
-		switch (type) {
-			case 'deskdrawer':
-				contItemChance = CONTAINER_TYPES[0].itemchance;
-				break;
-			case 'ammocrate':
-				contItemChance = CONTAINER_TYPES[1].itemchance;
-				break;
-			case 'suitcase':
-				contItemChance = CONTAINER_TYPES[2].itemchance;
-				break;
-		}
-
-		// Randomly generated number of items
-		lootAmt = RANDOM_NUM(minCapacity, maxCapacity);
-
-		// Iterate through items, randomly pulling an item from the lookup each time
-		for (let i = 0; i < lootAmt; i++) {
-			item = RANDOM_NUM(0, ITEMS.length - 1);
-			itemChance = RANDOM_NUM(1, maxLimit);
-			typeChance = RANDOM_NUM(0, 100);
-
-			// Add the item if it passes an individual item chance and container item type chance check
-			if (ITEMS[item].chance >= itemChance && contItemChance[ITEMS[item].type] >= typeChance) {
-				container.push(ITEMS[item]);
-			}
-		}
-
-		return container;
-	}
-
 	open = (container) => {
-		this.setState({showModal: true, title: container.title, container: this.getLoot(container)});
+		this.setState({showModal: true, title: container.title, container: GET_LOOT(container)});
 	}
 
 	close = (container) => {

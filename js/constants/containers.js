@@ -39,19 +39,31 @@ const CONTAINER_TYPES = [{
 const CONTAINER_SIZES = [{
 	type: 'small',
 	name: 'Small',
-	chance: 100
+	chance: 100,
+	minCapacity: 0,
+	maxCapacity: 5,
+	maxLimit: 100
 }, {
 	type: 'medium',
 	name: 'Medium',
-	chance: 50
+	chance: 50,
+	minCapacity: 2,
+	maxCapacity: 10,
+	maxLimit: 50
 }, {
 	type: 'large',
 	name: 'Large',
-	chance: 25
+	chance: 5,
+	minCapacity: 5,
+	maxCapacity: 15,
+	maxLimit: 25
 }, {
 	type: 'epic',
 	name: 'Epic',
-	chance: 5
+	chance: 5,
+	minCapacity: 15,
+	maxCapacity: 25,
+	maxLimit: 1
 }];
 
 export { CONTAINER_TYPES, CONTAINER_SIZES };
