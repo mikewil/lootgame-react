@@ -18,16 +18,16 @@ export default class ItemList extends React.Component {
 				list.push(<Item key={i} item={item} />);
 			});
 		} else {
-			list = <li>This container is empty</li>;
+			list = <h3 className="empty">This container is empty</h3>;
 		}
 
 		return (
-			<Modal show={this.props.show} onHide={this.props.close}>
+			<Modal className="item-container" show={this.props.show} onHide={this.props.close}>
 				<Modal.Header>
 					{this.props.title}
 				</Modal.Header>
 				<Modal.Body>
-					<ul>
+					<ul className="items">
 						{list}
 					</ul>
 				</Modal.Body>

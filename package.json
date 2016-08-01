@@ -4,7 +4,7 @@
   "description": "An RNG-based item system.",
   "main": "js/index.jsx",
   "scripts": {
-    "build": "watchify js/index.jsx -o dist/bundle.js"
+    "build": "watchify js/index.jsx -o dist/js/bundle.js"
   },
   "author": "Michael Williams",
   "license": "ISC",

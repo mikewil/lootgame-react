@@ -1,0 +1,61 @@
+body {
+    font-family: tahoma;
+}
+
+.items li {
+    display: flex;
+    list-style: none;
+    background: #f2e4d7;
+    border-radius: 10px;
+    border: 1px solid #e5d0be;
+    margin-bottom: .5em;
+    padding: 1em;
+}
+
+.items li:hover {
+    cursor: pointer;
+}
+
+.items li input.selecteditem {
+    margin-right: 1em;  
+}
+
+.items li .desc {
+    width: 100%;
+}
+
+.item-container h3 {
+    font-weight: bold;
+}
+
+.items span {
+    display: block;
+    font-size: .8em;
+}
+
+.items span.count {
+    text-align: right;
+    font-weight: bold;
+}
+
+.items > li.trap {
+    background-color: #ffd58e;
+    color: #875300;
+    border-color: #875300;
+}
+
+.trap > p {
+    font-size: 2em;
+}
+
+.items > li.diamonds {
+    background-color: #e6ff9b;
+    color: #506b00;
+    border-color: #506b00;
+}
+
+.openinventory {
+    position: absolute;
+    right: 0;
+    margin: 1em;
+}

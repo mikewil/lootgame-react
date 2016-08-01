@@ -6,7 +6,7 @@ const CONTAINER_TYPES = [{
 		weapon: 20,
 		consumable: 90,
 		valuable: 50,
-		explosive: 5,
+		explosive: 2,
 		material: 50,
 		accessory: 20
 	}
@@ -18,7 +18,7 @@ const CONTAINER_TYPES = [{
 		weapon: 80,
 		consumable: 50,
 		valuable: 2,
-		explosive: 5,
+		explosive: 2,
 		material: 50,
 		accessory: 90
 	}
@@ -30,7 +30,7 @@ const CONTAINER_TYPES = [{
 		weapon: 10,
 		consumable: 20,
 		valuable: 50,
-		explosive: 15,
+		explosive: 5,
 		material: 60,
 		accessory: 20
 	}

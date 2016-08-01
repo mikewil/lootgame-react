@@ -18,24 +18,42 @@ export function GET_LOOT(c) {
 			contItemChance,
 			container = [];
 
-		switch (type) {
-			case 'deskdrawer':
-				contItemChance = CONTAINER_TYPES[0].itemchance;
+		// Container size determines the minimum and maximum amount of items it can hold.
+		// Higher maxLimit reduces the chance of spawning
+		switch (size) {
+			case 'small':
 				minCapacity = CONTAINER_SIZES[0].minCapacity;
 				maxCapacity = CONTAINER_SIZES[0].maxCapacity;
 				maxLimit = CONTAINER_SIZES[0].maxLimit;
 				break;
-			case 'ammocrate':
-				contItemChance = CONTAINER_TYPES[1].itemchance;
+			case 'medium':
 				minCapacity = CONTAINER_SIZES[1].minCapacity;
 				maxCapacity = CONTAINER_SIZES[1].maxCapacity;
 				maxLimit = CONTAINER_SIZES[1].maxLimit;
 				break;
-			case 'suitcase':
-				contItemChance = CONTAINER_TYPES[2].itemchance;
+			case 'large':
 				minCapacity = CONTAINER_SIZES[2].minCapacity;
 				maxCapacity = CONTAINER_SIZES[2].maxCapacity;
 				maxLimit = CONTAINER_SIZES[2].maxLimit;
+				break;
+			case 'epic':
+				minCapacity = CONTAINER_SIZES[3].minCapacity;
+				maxCapacity = CONTAINER_SIZES[3].maxCapacity;
+				maxLimit = CONTAINER_SIZES[3].maxLimit;
+				break;
+		}
+
+		// Container type determines item type chances.
+		// For example, ammo crates have a higher chance to spawn weapons and accessories.
+		switch (type) {
+			case 'deskdrawer':
+				contItemChance = CONTAINER_TYPES[0].itemchance;
+				break;
+			case 'ammocrate':
+				contItemChance = CONTAINER_TYPES[1].itemchance;
+				break;
+			case 'suitcase':
+				contItemChance = CONTAINER_TYPES[2].itemchance;
 				break;
 		}
 
