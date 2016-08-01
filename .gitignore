@@ -3,6 +3,9 @@
 ### Git ###
 *.orig
 
+### PHPStorm ###
+.idea
+
 ### Public folder ###
 # JS Bundle
 dist/bundle.js
