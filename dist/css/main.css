@@ -3,17 +3,19 @@ body {
 }
 
 .items li {
-    display: flex;
     list-style: none;
-    background: #f2e4d7;
-    border-radius: 10px;
-    border: 1px solid #e5d0be;
+    background: #eeeeee;
+    border: 1px solid #e5e5e5;
     margin-bottom: .5em;
     padding: 1em;
 }
 
 .items li:hover {
     cursor: pointer;
+}
+
+.items li:last-child {
+    margin-bottom: 0;
 }
 
 .items li input.selecteditem {

@@ -5,7 +5,7 @@ const CONTAINER_TYPES = [{
 	itemchance: {
 		weapon: 20,
 		consumable: 90,
-		valuable: 50,
+		valuable: 10,
 		explosive: 2,
 		material: 50,
 		accessory: 20
@@ -16,10 +16,10 @@ const CONTAINER_TYPES = [{
 	chance: 50,
 	itemchance: {
 		weapon: 80,
-		consumable: 50,
+		consumable: 0,
 		valuable: 2,
 		explosive: 2,
-		material: 50,
+		material: 30,
 		accessory: 90
 	}
 }, {
@@ -28,10 +28,10 @@ const CONTAINER_TYPES = [{
 	chance: 30,
 	itemchance: {
 		weapon: 10,
-		consumable: 20,
+		consumable: 40,
 		valuable: 50,
 		explosive: 5,
-		material: 60,
+		material: 10,
 		accessory: 20
 	}
 }];
@@ -42,7 +42,7 @@ const CONTAINER_SIZES = [{
 	chance: 100,
 	minCapacity: 0,
 	maxCapacity: 5,
-	maxLimit: 100
+	maxLimit: 75
 }, {
 	type: 'medium',
 	name: 'Medium',
@@ -53,17 +53,17 @@ const CONTAINER_SIZES = [{
 }, {
 	type: 'large',
 	name: 'Large',
-	chance: 5,
+	chance: 25,
 	minCapacity: 5,
 	maxCapacity: 15,
-	maxLimit: 25
+	maxLimit: 15
 }, {
 	type: 'epic',
 	name: 'Epic',
-	chance: 5,
+	chance: 3,
 	minCapacity: 15,
 	maxCapacity: 25,
-	maxLimit: 1
+	maxLimit: 5
 }];
 
 export { CONTAINER_TYPES, CONTAINER_SIZES };
