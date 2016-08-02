@@ -8,7 +8,7 @@
 
 ### Public folder ###
 # JS Bundle
-dist/bundle.js
+dist/js
 
 ### Node ###
 # Logs
