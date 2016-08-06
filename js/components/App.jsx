@@ -1,9 +1,12 @@
 import React from 'react';
 import ItemList from './ItemList.jsx';
+import Inventory from './Inventory.jsx';
 import {Navbar, Grid, Row, Col, Button} from 'react-bootstrap';
 
 import {RANDOM_NUM, GET_CONTAINERS, GET_LOOT} from '../constants/methods';
 import {CONTAINER_TYPES, CONTAINER_SIZES} from '../constants/containers';
+
+import Services from '../services/services.js';
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -12,7 +15,8 @@ export default class App extends React.Component {
 		this.state = {
 			showModal: false,
 			title: undefined,
-			container: []
+			container: [],
+			inventory: Services.getItems()
 		}
 
 		this.containers = GET_CONTAINERS();
@@ -42,17 +46,22 @@ export default class App extends React.Component {
 	}
 
 	takeItem = (item) => {
-		// TODO: Add item to Local Storage
 		let newList = this.state.container.filter((i) => {
 			return i.pid !== item.pid
 		});
 		
-		this.setState({container: newList})
+		Services.saveItem(item);
+		this.setState({container: newList, inventory: Services.getItems()})
+		console.log(this.state);
 	}
 
 	takeAll = () => {
-		// TODO: Add items to Local Storage
-		this.setState({container: []})
+		Services.saveItems(this.state.container);
+		this.setState({container: [], inventory: Services.getItems()})
+	}
+
+	deleteItem = (item) => {
+		Services.deleteItem(item);
 	}
 
 	render() {
@@ -77,7 +86,7 @@ export default class App extends React.Component {
 					</Col>
 					<Col sm={3}>
 						<Row>
-							Future home of the inventory.
+							<Inventory inventory={this.state.inventory} deleteItem={this.deleteItem} />
 						</Row>
 					</Col>
 				</Grid>
