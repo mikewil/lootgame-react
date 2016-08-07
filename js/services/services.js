@@ -6,7 +6,7 @@ export default {
 			isStored = false;
 
 		if (localStorage.length) {
-			for (let i=1; i<localStorage.length; i++) {
+			for (let i=0; i<localStorage.length; i++) {
 
 				id = localStorage.key(i);
 				item = JSON.parse(localStorage.getItem(id));
@@ -31,12 +31,12 @@ export default {
 		let id,
 			item,
 			count,
-			isStored = false;
+			isStored;
 
 		for (let i=0; i<data.length; i++) {
+			isStored = false;
 			if (localStorage.length) {
-				for (let j=0; j<localStorage.length; j++) {
-
+				for (let j=1; j<localStorage.length; j++) {
 					id = localStorage.key(j);
 					item = JSON.parse(localStorage.getItem(id));
 
@@ -49,9 +49,10 @@ export default {
 				}
 				if (!isStored) {
 					localStorage.setItem(localStorage.length + 1, JSON.stringify(data[i]));
+					isStored = true;
 				}
 			} else {
-				localStorage.setItem(i, JSON.stringify(data[i]));
+				localStorage.setItem(i + 1, JSON.stringify(data[i]));
 			}
 		}
 
@@ -92,9 +93,9 @@ export default {
 				}
 			}
 		}
+	},
+
+	deleteAll() {
+		localStorage.clear();
 	}
-
-	// deleteAll() {
-
-	// }
 }

@@ -12,10 +12,10 @@ export default class ItemList extends React.Component {
 			list = [];
 			hasItems = true;
 			this.props.container.map((item, i) => {
-				list.push(<Item key={i} item={item} takeItem={() => this.props.takeItem(item)} />);
+				list.push(<Item key={i} item={item} clickHandler={() => this.props.takeItem(item)} />);
 			});
 		} else {
-			list = <h3 className="empty">This container is empty</h3>;
+			list = <h3 className="empty">This container is empty.</h3>;
 		}
 
 		return (
@@ -29,7 +29,7 @@ export default class ItemList extends React.Component {
 					</ul>
 				</Modal.Body>
 				<Modal.Footer>
-						{hasItems ? <Button onClick={this.props.takeAll}>Take All</Button> : null}
+					{hasItems ? <Button onClick={this.props.takeAll}>Take All</Button> : null}
 					<Button onClick={this.props.close}>Close</Button>
 				</Modal.Footer>
 			</Modal>

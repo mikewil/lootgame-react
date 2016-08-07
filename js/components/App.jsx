@@ -47,21 +47,30 @@ export default class App extends React.Component {
 
 	takeItem = (item) => {
 		let newList = this.state.container.filter((i) => {
-			return i.pid !== item.pid
+			// Only filter out if the count is 1. We want to reduce the count on each click if it's greater than 1
+			return item.count === 1 ? i.pid !== item.pid : true;
 		});
+
+		// Reduce the count if it's greater than 1
+		item.count = item.count > 1 ? item.count - 1 : item.count;
 		
 		Services.saveItem(item);
-		this.setState({container: newList, inventory: Services.getItems()})
-		console.log(this.state);
+		this.setState({container: newList, inventory: Services.getItems()});
 	}
 
 	takeAll = () => {
 		Services.saveItems(this.state.container);
-		this.setState({container: [], inventory: Services.getItems()})
+		this.setState({container: [], inventory: Services.getItems()});
 	}
 
 	deleteItem = (item) => {
 		Services.deleteItem(item);
+		this.setState({inventory: Services.getItems()});
+	}
+
+	deleteAll = () => {
+		Services.deleteAll();
+		this.setState({inventory: Services.getItems()});
 	}
 
 	render() {
@@ -71,22 +80,20 @@ export default class App extends React.Component {
 					<Navbar.Brand>Loot Game</Navbar.Brand>
 				</Navbar>
 				<Grid>
-					<Col sm={9}>
-						<Row>
-							{this.containers.map((container, i) => {
-								return (
-									<Col sm={3} key={i}>
-										<Button onClick={() => this.open(container)} bsStyle={this.getButtonStyle(container.type)}>
-											{container.title}
-										</Button>
-									</Col>
-								);
-							})}
-						</Row>
+					<Col sm={5}>
+						{this.containers.map((container, i) => {
+							return (
+								<Row key={i}>
+									<Button onClick={() => this.open(container)} bsStyle={this.getButtonStyle(container.type)}>
+										{container.title}
+									</Button>
+								</Row>
+							);
+						})}
 					</Col>
-					<Col sm={3}>
+					<Col sm={7}>
 						<Row>
-							<Inventory inventory={this.state.inventory} deleteItem={this.deleteItem} />
+							<Inventory inventory={this.state.inventory} deleteItem={this.deleteItem} deleteAll={this.deleteAll} />
 						</Row>
 					</Col>
 				</Grid>
