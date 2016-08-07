@@ -4,14 +4,26 @@ import {Row, Button} from 'react-bootstrap';
 
 export default class Inventory extends React.Component {
 
+	itemCount(inventory) {
+		let count = 0;
+
+		for (let i=0; i<inventory.length; i++) {
+			count += parseInt(inventory[i].count);
+		}
+
+		return count;
+	}
+
 	render() {
 		let list,
-			hasItems = false;
+			hasItems = false,
+			itemCount = 0;
 
 		// If inventory is empty, say so
 		if (this.props.inventory.length) {
 			list = [];
 			hasItems = true;
+			itemCount = this.itemCount(this.props.inventory);
 			this.props.inventory.map((item, i) => {
 				list.push(<Item key={i} item={item} clickHandler={() => this.props.deleteItem(item)} />);
 			});
@@ -20,7 +32,8 @@ export default class Inventory extends React.Component {
 		}
 
 		return (
-			<aside>
+			<aside className="inventory">
+				{hasItems ? <p className="count">Total Items: {itemCount}</p> : null}
 				<ul className="items">
 					{list}
 				</ul>

@@ -69,3 +69,9 @@ body {
 .container .btn {
     width: 100%;
 }
+
+.inventory .count {
+    font-size: .8em;
+    text-align: right;
+    margin-bottom: 10px;
+}

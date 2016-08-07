@@ -36,7 +36,7 @@ export default {
 		for (let i=0; i<data.length; i++) {
 			isStored = false;
 			if (localStorage.length) {
-				for (let j=1; j<localStorage.length; j++) {
+				for (let j=0; j<localStorage.length; j++) {
 					id = localStorage.key(j);
 					item = JSON.parse(localStorage.getItem(id));
 
