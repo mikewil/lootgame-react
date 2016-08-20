@@ -7,7 +7,7 @@ body {
     background: #eeeeee;
     border: 1px solid #e5e5e5;
     margin-bottom: .5em;
-    padding: 1em;
+    padding: .5em;
 }
 
 .items li:hover {
@@ -23,10 +23,12 @@ body {
 }
 
 .items li .desc {
+    display: table;
     width: 100%;
 }
 
-.item-container h3 {
+.items h3 {
+    margin-bottom: 5px;
     font-weight: bold;
 }
 
@@ -44,6 +46,27 @@ body {
     background-color: #ffd58e;
     color: #875300;
     border-color: #875300;
+}
+
+.item .image, .item .text, .item .count {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.item .image {
+    width: 70px;
+}
+
+.item .count {
+    width: 30px;
+    text-align: right;
+}
+
+.item .image img {
+    width: 50px;
+    height: 50px;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
 }
 
 .trap > p {
@@ -72,6 +95,5 @@ body {
 
 .inventory .count {
     font-size: .8em;
-    text-align: right;
     margin-bottom: 10px;
 }
