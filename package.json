@@ -4,6 +4,7 @@
   "description": "An RNG-based item system.",
   "main": "js/index.jsx",
   "scripts": {
+    "start": "node server.js",
     "build": "mkdir -p dist/js && watchify js/index.jsx -o dist/js/bundle.js"
   },
   "author": "Michael Williams",
@@ -21,6 +22,9 @@
     "babelify": "^7.3.0",
     "browserify": "^13.1.0",
     "watchify": "^3.7.0"
+  },
+  "engines" : {
+    "node" : "^9.0.0"
   },
   "browserify": {
     "transform": [
